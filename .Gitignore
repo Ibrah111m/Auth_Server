@@ -30,3 +30,11 @@ Dockerfile
 package-lock.json
 yarn.lock
 *.tsbuildinfo
+# Ignorera node_modules
+/node_modules/
+
+# Ignorera miljövariabler
+.env
+
+# Ignorera databasmappen
+/src/databas/mysql-data/
