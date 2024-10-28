@@ -38,3 +38,5 @@ yarn.lock
 
 # Ignorera databasmappen
 /src/databas/mysql-data/
+
+network-info.sh
