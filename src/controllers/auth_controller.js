@@ -1,54 +1,18 @@
-const {SECURE, HTTP_ONLY, SAME_SITE } = require("../config");
-const {generateAccessToken, generateRefreshToken, generateCsrfToken} = require('../domain/auth_handler');
-exports.basicLogin = (req, res) => {
-  res.status(200).send("Basic login successful");
+const { generateAccessToken, generateRefreshToken } = require('../domain/auth_handler');
+
+exports.login = (req, res) => {
+  const user = req.body;
+  const accessToken = generateAccessToken(user);
+  const refreshToken = generateRefreshToken(user);
+
+  res.cookie('accessToken', accessToken, { httpOnly: true, secure: true });
+  res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: true });
+
+  res.status(200).json({ accessToken, refreshToken });
 };
-
- exports.bearerLogin = (req, res) => {
- res.status(200).send("Bearer token provided");
-};
-
-exports.refreshToken = (req, res) => {
- res.status(200).send("Bearer token refreshed");
-};
-
-exports.digestLogin = (req, res) => {
- res.status(200).send("Digest login successful");
-};
-
-exports.customLogin = (req, res) => {
-  res.status(200).send("Custom login successful");
-};
-
-exports.nologinLogin = (req, res) => {
- const user = req.body || { user: 'user@example.com' };
-
- const accessToken = generateAccessToken(user);
- const refreshToken = generateRefreshToken(user);
- const csrfToken = generateCsrfToken();
-
- res.cookie('accessToken', accessToken, {
-  httpOnly: HTTP_ONLY,
-  secure: SECURE,
-  maxAge: 15 * 60 * 1000,
-  sameSite: SAME_SITE
-});
-
- res.cookie('refreshToken', refreshToken, {
-  httpOnly: HTTP_ONLY,
-  secure: SECURE,
-  maxAge: 7 * 24 * 60 * 60 * 1000,
-  path: '/refresh',
-  sameSite: SAME_SITE
-});
-
- res.json({ csrfToken });
-}
 
 exports.logout = (req, res) => {
- res.status(200).send("Logout successful");
-}
-
-
-
-
+  res.clearCookie('accessToken');
+  res.clearCookie('refreshToken');
+  res.status(200).send('Logout successful');
+};

@@ -1,21 +1,17 @@
 const express = require('express');
-const { AUTH, AUTH_TYPES } = require('./config');
+const authRoutes = require('./routes/auth_routes');
+const adminRoutes = require('./routes/admin_routes');
+
 const app = express();
 app.use(express.json());
+app.use('/api/auth', authRoutes);
+app.use('/api/admin', adminRoutes);
 
-app.get('/', (req,res) => {
-res.send({});
+app.use((req, res, next) => {
+    console.log(`Request URL: ${req.url}`);
+    next();
 });
 
- const authRouter = {
-     [AUTH_TYPES.BASIC]: require('./routes/basic_auth_routes'),
-     [AUTH_TYPES.BEARER]: require('./routes/bearer_auth_routes'),
-     [AUTH_TYPES.DIGEST]: require('./routes/digest_auth_routes'),
-     [AUTH_TYPES.CUSTOM]: require('./routes/custom_auth_routes'),
-     [AUTH_TYPES.NONE]: require('./routes/auth_routes'),
-}[AUTH] || require('./routes/defaultAuthRouter');
-
-app.use('/api/auth', authRouter);
 app.use((req, res) => res.status(404).send('Not Found'));
 
-module.exports= app;    
+module.exports = app;
