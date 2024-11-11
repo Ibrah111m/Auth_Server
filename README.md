@@ -62,18 +62,18 @@ Admin Endpoints
     GET /api/admin/users: Hämtar alla användare från databasen.
     POST /api/admin/users: Skapar en ny användare.
     GET /api/admin/users/
-    : Hämtar användarinformation baserat på användarens ID.
+    Hämtar användarinformation baserat på användarens ID.
     PUT /api/admin/users/
-    : Uppdaterar användardata för en specifik användare baserat på ID.
+    Uppdaterar användardata för en specifik användare baserat på ID.
     DELETE /api/admin/users/
-    : Tar bort en användare baserat på ID.
+    Tar bort en användare baserat på ID.
 
 Group Endpoints
 
     POST /api/admin/groups: Skapar en ny grupp.
     GET /api/admin/groups: Hämtar alla grupper.
     DELETE /api/admin/groups/
-    : Tar bort en grupp baserat på gruppnamnet.
+    Tar bort en grupp baserat på gruppnamnet.
 
 Docker
 
