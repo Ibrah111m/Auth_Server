@@ -48,32 +48,32 @@ Detta kommer att bygga och köra både applikationen och databasen i separata co
 
 När applikationen körs kommer den att vara tillgänglig på följande URL:er:
 
-    Login: http://localhost:3000/api/auth/login
-    Users: http://localhost:3000/api/admin/users
+Login: http://localhost:3000/api/auth/login
+Users: http://localhost:3000/api/admin/users
 
 API-endpoints
 Auth Endpoints
 
-    POST /api/auth/login: Loggar in användaren och returnerar access och refresh tokens.
-    POST /api/auth/logout: Loggar ut användaren genom att rensa cookies med JWT.
+POST /api/auth/login: Loggar in användaren och returnerar access och refresh tokens.
+POST /api/auth/logout: Loggar ut användaren genom att rensa cookies med JWT.
 
 Admin Endpoints
 
-    GET /api/admin/users: Hämtar alla användare från databasen.
-    POST /api/admin/users: Skapar en ny användare.
-    GET /api/admin/users/
-    Hämtar användarinformation baserat på användarens ID.
-    PUT /api/admin/users/
-    Uppdaterar användardata för en specifik användare baserat på ID.
-    DELETE /api/admin/users/
-    Tar bort en användare baserat på ID.
+GET /api/admin/users: Hämtar alla användare från databasen.
+POST /api/admin/users: Skapar en ny användare.
+GET /api/admin/users/
+Hämtar användarinformation baserat på användarens ID.
+PUT /api/admin/users/
+Uppdaterar användardata för en specifik användare baserat på ID.
+DELETE /api/admin/users/
+Tar bort en användare baserat på ID.
 
 Group Endpoints
 
-    POST /api/admin/groups: Skapar en ny grupp.
-    GET /api/admin/groups: Hämtar alla grupper.
-    DELETE /api/admin/groups/
-    Tar bort en grupp baserat på gruppnamnet.
+POST /api/admin/groups: Skapar en ny grupp.
+GET /api/admin/groups: Hämtar alla grupper.
+DELETE /api/admin/groups/
+Tar bort en grupp baserat på gruppnamnet.
 
 Docker
 
@@ -82,7 +82,7 @@ Docker Compose
 
 Docker Compose används för att hantera tjänster. Här är några användbara kommandon:
 
-    Bygg och starta containrar:
+Bygg och starta containrar:
 
 docker-compose up --build
 
@@ -92,7 +92,7 @@ docker-compose down
 
 Se loggar för containrar:
 
-    docker-compose logs
+docker-compose logs
 
 Databas
 
